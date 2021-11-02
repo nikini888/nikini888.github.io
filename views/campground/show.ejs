@@ -4,7 +4,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.1/mapbox-gl.js"></script>
     <link rel="stylesheet" href="/styleSheets/map.css">
     <div class="row mx-5">
-        <div class="col-md-7">
+        <div class="col-md-7 col">
             <div class="card mb-3 p-0">
                 <div id="carouselExampleControlsNoTouching" class="carousel slide" data-bs-touch="false"
                     data-bs-interval="false">
@@ -71,7 +71,7 @@
             </div>
             <div id='map' class="card mb-3 map-show"></div>
             <% if(userLogin){ %>
-                <div class="card p-3">
+                <div class="card p-3 mb-3">
                     <form action="/campgrounds/<%=camp._id%>/reviews" method="POST" class="needs-validation reviewForm"
                         onsubmit="return ischecked()" novalidate>
                         <h5>Leave a review</h5>
