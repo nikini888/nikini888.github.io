@@ -1,0 +1,61 @@
+<% layout('layout/boilerplate')-%>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styleSheets/geoSearch.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+        type="text/css">
+    <div class="container row justify-content-center">
+        <h1 class="text-center">New Campground</h1>
+
+        <form action="/campgrounds" method='POST' class="col-md-6 needs-validation mb-3" novalidate
+            enctype="multipart/form-data">
+            <div class="mb-3 ">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name='campground[title]' class="form-control" id="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Choose location</label>
+                <div id="geocoder"></div>
+                <input id="location" type="text" name="campground[location]" required>
+                <input id="coordinates" type="text" name="geometry[coordinates]" required>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Add Image</label>
+                <div class="input-group">
+                    <label for="image" class="input-group-text">Upload</label>
+                    <label for="image" class="form-control filenameLabel">Choose image(s)...</label>
+                </div>
+                <input type="file" name='image' class="form-control inputImg" id="image" multiple required
+                    style="display:none" onchange="displayFilename()">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Campgrounds Price </label>
+                <div class="input-group ">
+                    <span class="input-group-text" id="basic-addon1">$</span>
+                    <input type="text" class="form-control" name="campground[price]" placeholder="0.00" required>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" name="campground[description]" id="description" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="about" class="form-label">Some words about you</label>
+                <% if(user.about){ %>
+                    <textarea class="form-control" name="about" id="about" required><%=user.about%></textarea>
+                    <% } else{%> <textarea class="form-control" name="about" id="about"
+                            required>My name <%=user.fullName%>...</textarea>
+                        <%}%>
+
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <script>
+        accessToken = '<%=process.env.MAPBOX_ACCESS_TOKEN%>';
+    </script>
+    <script src="/js/geoSearch.js"></script>

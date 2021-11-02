@@ -1,0 +1,68 @@
+<% layout('layout/boilerplate')-%>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styleSheets/geoSearch.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
+    <script
+        src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.min.js"></script>
+    <link rel="stylesheet"
+        href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.2/mapbox-gl-geocoder.css"
+        type="text/css">
+    <div class="container row justify-content-center">
+        <h1 class="text-center">Edit Campground</h1>
+
+        <form action="/campgrounds/<%=camp._id%>?_method=PUT" method='POST' class="col-md-6"
+            enctype="multipart/form-data">
+            <div class="mb-3 ">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" name='campground[title]' class="form-control" id="title" value="<%=camp.title%>">
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location <span class="span-location">
+                        <%=camp.location %>
+                    </span></label>
+                <div id="geocoder"></div>
+                <input id="location" type="text" name="campground[location]" required value="<%=camp.location%>">
+                <input id="coordinates" type="text" name="geometry[coordinates]" required
+                    value="<%=camp.geometry.coordinates%>">
+            </div>
+            <div class=" mb-3">
+                <label for="price" class="form-label">Campgrounds Price </label>
+                <div class="input-group ">
+                    <span class="input-group-text" id="basic-addon1">$</span>
+                    <input type="number" class="form-control" name="campground[price]" value="<%=camp.price%>">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" name="campground[description]"
+                    id="description"><%=camp.description%></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Add Image</label>
+                <div class="input-group">
+                    <label for="image" class="input-group-text">Upload</label>
+                    <label for="image" class="form-control filenameLabel">Choose image(s)...</label>
+                </div>
+                <input type="file" name='editAddImage' class="form-control inputImg" id="image" multiple
+                    onchange="displayFilename()">
+            </div>
+            <div class="mb-3  d-flex justify-content-around flex-wrap overflow-auto img-del">
+                <%camp.images.forEach((img,i)=>{ %>
+                    <div class="form-check-inline">
+                        <div class="d-flex flex-column">
+                            <label for="del<%=i%>"><img src="<%=img.thumbnail%>" alt=""></label>
+                            <div>
+                                <input type="checkbox" name="delImage" id="del<%=i%>" value="<%=img.fileName%>">
+                                <label for="del<%=i%>">Delete</label>
+                            </div>
+                        </div>
+                    </div>
+                    <% })%>
+            </div>
+            <button type="submit" class="btn btn-info mb-3">Update Campground</button>
+        </form>
+    </div>
+    <script>
+        accessToken = '<%=process.env.MAPBOX_ACCESS_TOKEN%>';
+    </script>
+    <script src="/js/geoSearch.js"></script>

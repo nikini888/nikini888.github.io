@@ -1,0 +1,43 @@
+<% layout('layout/boilerplate')%>
+    <link rel="stylesheet" href="/styleSheets/log.css">
+    <div class="container row align-items-center col-lg-6 offset-lg-3">
+        <div class="card mb-2 px-0 ">
+            <div class="img "></div>
+            <div class="card-body ">
+                <div class=" text-center card-head mt-3 mb-3">
+                    <h1 class="text-warning fw-bold">YelpCamp</h1>
+                    <p class="text-light">Create your account</p>
+                </div>
+                <form action="/register" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name='username' class="form-control" id="username" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">First and last name</span>
+                        <input type="text" name="firstName" aria-label="First name" class="form-control">
+                        <input type="text" name="lastName" aria-label="Last name" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name='email' class="form-control" id="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name='password' class="form-control" id="password" required>
+                    </div>
+                    <div class="w-100 d-flex flex-end">
+                        <button class="btn btn-warning ms-auto">Register</button>
+                    </div>
+                    <p class="text-muted text-center mb-0">By signing up, you agree to our Terms , Data <br>Policy and
+                        Cookies Policy.
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-3 ">
+            <div class="card-body text-center">
+                <p class="mb-0">Have an account? <a href="/login">Log in</a></p>
+            </div>
+        </div>
+    </div>

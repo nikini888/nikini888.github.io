@@ -1,0 +1,27 @@
+#geocoder {
+    z-index: 1;
+}
+
+.mapboxgl-ctrl-geocoder {
+    min-width: 100% !important;
+    color: white !important;
+}
+
+.mapboxgl-ctrl-geocoder,
+.mapboxgl-ctrl-geocoder .suggestions {
+    box-shadow: none !important;
+    border: 1px solid #ced4da !important;
+}
+
+input#location,
+input#coordinates,
+input#image{
+    display:none !important;
+}
+
+textarea{
+    height: 100px;
+}
+.img-del{
+    height:320px;
+}

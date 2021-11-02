@@ -1,0 +1,31 @@
+<% layout('layout/boilerplate')%>
+    <link rel="stylesheet" href="/styleSheets/log.css">
+    <div class="container row align-items-center col-lg-6 offset-lg-3">
+        <div class="card mb-2 px-0 ">
+            <div class="img "></div>
+            <div class="card-body ">
+                <div class=" text-center card-head mt-3 mb-3">
+                    <h1 class="text-warning fw-bold">YelpCamp</h1>
+                    <p class="text-light">Welcome back!</p>
+                </div>
+                <form action="/login" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name='username' class="form-control" id="username" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name='password' class="form-control" id="password" required>
+                    </div>
+                    <div class="w-100 d-flex flex-end">
+                        <button class="btn btn-warning ms-auto">Log in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card mb-3 ">
+            <div class="card-body text-center">
+                <p class="mb-0">Don't have an account? <a href="/register" class="register">Register</a></p>
+            </div>
+        </div>
+    </div>

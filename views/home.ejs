@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styleSheets/home.css">
+    <title>Home page</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a href="#" class="logo">Yelpcamp</a>
+            <input type="checkbox" name="" id="nav-toggle" class="nav-toggle">
+            <nav class="navbar">
+                <ul>
+                    <li class="nav-item"><a href="/campgrounds">Campgrounds</a></li>
+                    <li class="nav-item"><a href="/campgrounds/new">New Campgrounds</a></li>
+                    <% if(!userLogin) {%>
+                        <li class="nav-item"><a href="/login">Log in</a></li>
+                        <li class="nav-item"><a href="/register">Sign in</a></li>
+                        <% } else{ %>
+                            <li class="nav-item"><a href="/logout">Log out</a></li>
+                            <% } %>
+                </ul>
+            </nav>
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
+        </header>
+        <main>
+            <h1>Welcome to YelpCamp!</h1>
+            <p class="lead">
+                Jump right in and explore our many campgrounds.
+                <br>
+                Feel free to share some of your own <br>and comment on others!
+            </p>
+            <a href="/campgrounds" class="btn-camp">View
+                Campgrounds</a>
+        </main>
+        <footer>
+            <p>&copy; 2021</p>
+        </footer>
+    </div>
+
+</body>
+
+</html>
